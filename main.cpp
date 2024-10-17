@@ -9,6 +9,7 @@ char board[3][3] = {
     {'7', '8', '9'}};
 
 int current_player;
+char player_input;
 
 void drawBoard()
 {
