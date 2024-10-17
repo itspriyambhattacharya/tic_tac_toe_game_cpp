@@ -84,14 +84,14 @@ int game_winner()
             return current_player;
         }
     }
+    return 0;
 }
 
 void game_logic()
 {
-    int fl = 0;
-    int slot;   // to store the position in the game board where user will give input
-    char input; // to store the input that user will give
-    int winner; // to store the winner player
+    int slot;       // to store the position in the game board where user will give input
+    char input;     // to store the input that user will give
+    int winner = 0; // to store the winner player
 
     cout << "\nPlayer 1, choose your input (X or O)\n";
     fflush(stdin);
@@ -109,38 +109,42 @@ void game_logic()
     }
 
     drawBoard();
-    while (fl == 0)
+    for (int i = 0; i < 9; i++)
     {
         cout << "\nPlayer " << current_player << "'s turn";
         cout << "\nEnter slot:\t";
         cin >> slot;
         if (slot < 1 || slot > 9)
         {
+            i--;
             cout << "\nSlot out of range. Try again.\n";
             continue;
         }
         int res = placeSlot(slot);
         if (res == 0)
         {
+            i--;
             cout << "\nSlot Occupied. Try again.\n";
             continue;
         }
         drawBoard();
-        winner = game_winner();
+        cout << "Winner is:\t" << winner << endl;
         if (winner == 1)
         {
             cout << "\nPlayer 1 is winner.\n";
-            fl = 1;
             break;
         }
         else if (winner == 2)
         {
             cout << "\nPlayer 2 is winner.\n";
-            fl = 1;
             break;
         }
 
         swap_player_input();
+    }
+    if (winner == 0)
+    {
+        cout << "\nTie\n";
     }
 }
 
