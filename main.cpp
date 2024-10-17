@@ -35,11 +35,31 @@ int placeSlot(int slot)
     }
 }
 
+void swap_player_input()
+{
+    if (current_player == 1)
+    {
+        current_player = 2;
+    }
+    else
+    {
+        current_player = 1;
+    }
+    if (player_input == 'X')
+    {
+        player_input = 'O';
+    }
+    else
+    {
+        player_input = 'X';
+    }
+}
+
 void game()
 {
     int fl = 0;
-    int slot;
-    char input;
+    int slot;   // Variable to store the position in the game board where user will give input
+    char input; // the input that user will give
     cout << "\nPlayer 1, choose your input (X or O)\n";
     fflush(stdin);
     cin >> input;
@@ -73,6 +93,7 @@ void game()
             continue;
         }
         drawBoard();
+        swap_player_input();
     }
 }
 
