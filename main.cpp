@@ -55,11 +55,44 @@ void swap_player_input()
     }
 }
 
-void game()
+int game_winner()
+{
+    // left diagonal check
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2])
+        return current_player;
+
+    // right diagonal check
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0])
+    {
+        return current_player;
+    }
+
+    // row check
+    for (int i = 0; i < 3; i++)
+    {
+        if (board[i][0] == board[i][1] && board[i][1] == board[i][2])
+        {
+            return current_player;
+        }
+    }
+
+    // column check
+    for (int i = 0; i < 3; i++)
+    {
+        if (board[0][i] == board[1][i] && board[1][i] == board[2][i])
+        {
+            return current_player;
+        }
+    }
+}
+
+void game_logic()
 {
     int fl = 0;
-    int slot;   // Variable to store the position in the game board where user will give input
-    char input; // the input that user will give
+    int slot;   // to store the position in the game board where user will give input
+    char input; // to store the input that user will give
+    int winner; // to store the winner player
+
     cout << "\nPlayer 1, choose your input (X or O)\n";
     fflush(stdin);
     cin >> input;
@@ -93,12 +126,26 @@ void game()
             continue;
         }
         drawBoard();
+        winner = game_winner();
+        if (winner == 1)
+        {
+            cout << "\nPlayer 1 is winner.\n";
+            fl = 1;
+            break;
+        }
+        else if (winner == 2)
+        {
+            cout << "\nPlayer 2 is winner.\n";
+            fl = 1;
+            break;
+        }
+
         swap_player_input();
     }
 }
 
 int main(void)
 {
-    game();
+    game_logic();
     return 0;
 }
