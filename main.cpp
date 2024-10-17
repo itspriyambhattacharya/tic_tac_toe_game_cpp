@@ -19,8 +19,27 @@ void drawBoard()
     cout << " " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << endl;
 }
 
+void game()
+{
+    int fl = 0;
+    int slot;
+    drawBoard();
+    current_player = 1;
+    while (fl == 0)
+    {
+        cout << "\nPlayer " << current_player << "'s turn";
+        cout << "\nEnter slot:\t";
+        cin >> slot;
+        if (slot < 1 || slot > 9)
+        {
+            cout << "\nSlot out of range. Try again.\n";
+            continue;
+        }
+    }
+}
+
 int main(void)
 {
-    drawBoard();
+    game();
     return 0;
 }
