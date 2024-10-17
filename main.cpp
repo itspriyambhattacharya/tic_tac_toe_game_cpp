@@ -94,6 +94,7 @@ void game_logic()
 
     cout << "\nPlayer 1, choose your input (X or O)\n";
     cin >> player_input;
+    player_input = toupper(player_input);
     current_player = 1;
 
     drawBoard();
@@ -119,12 +120,12 @@ void game_logic()
         winner = game_winner();
         if (winner == 1)
         {
-            cout << "\nCongratulations!!! Player 1 is winner.\n";
+            cout << "\nCongratulations!!! Player 1 is the winner.\n";
             break;
         }
         else if (winner == 2)
         {
-            cout << "\nCongratulations!!! Player 2 is winner.\n";
+            cout << "\nCongratulations!!! Player 2 is the winner.\n";
             break;
         }
 
