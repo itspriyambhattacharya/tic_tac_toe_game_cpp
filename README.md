@@ -1,4 +1,4 @@
-# Tic-Tac-Toe Game (C++)
+# Tic-Tac-Toe Game
 
 This is a simple command-line Tic-Tac-Toe game implemented in C++. The game is designed for two players and offers an interactive experience through a text-based interface.
 
