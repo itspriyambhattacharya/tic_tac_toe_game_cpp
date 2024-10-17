@@ -89,9 +89,9 @@ int game_winner()
 
 void game_logic()
 {
-    int slot;       // to store the position in the game board where user will give input
-    char input;     // to store the input that user will give
-    int winner = 0; // to store the winner player
+    int slot;   // to store the position in the game board where user will give input
+    char input; // to store the input that user will give
+    int winner; // to store the winner player
 
     cout << "\nPlayer 1, choose your input (X or O)\n";
     fflush(stdin);
@@ -109,7 +109,7 @@ void game_logic()
     }
 
     drawBoard();
-    for (int i = 0; i < 9; i++)
+    for (int i = 1; i <= 9; i++)
     {
         cout << "\nPlayer " << current_player << "'s turn";
         cout << "\nEnter slot:\t";
@@ -128,7 +128,7 @@ void game_logic()
             continue;
         }
         drawBoard();
-        cout << "Winner is:\t" << winner << endl;
+        winner = game_winner();
         if (winner == 1)
         {
             cout << "\nPlayer 1 is winner.\n";
