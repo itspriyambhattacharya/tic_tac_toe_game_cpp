@@ -20,12 +20,42 @@ void drawBoard()
     cout << " " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << endl;
 }
 
+int placeSlot(int slot)
+{
+    int row = (slot - 1) / 3;
+    int col = (slot - 1) % 3;
+    if (board[row][col] != 'X' && board[row][col] != 'O')
+    {
+        board[row][col] = player_input;
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 void game()
 {
     int fl = 0;
     int slot;
-    drawBoard();
+    char input;
+    cout << "\nPlayer 1, choose your input (X or O)\n";
+    fflush(stdin);
+    cin >> input;
     current_player = 1;
+    player_input = input;
+
+    if (input == 'X')
+    {
+        input = 'O';
+    }
+    else
+    {
+        input = 'X';
+    }
+
+    drawBoard();
     while (fl == 0)
     {
         cout << "\nPlayer " << current_player << "'s turn";
@@ -36,6 +66,13 @@ void game()
             cout << "\nSlot out of range. Try again.\n";
             continue;
         }
+        int res = placeSlot(slot);
+        if (res == 0)
+        {
+            cout << "\nSlot Occupied. Try again.\n";
+            continue;
+        }
+        drawBoard();
     }
 }
 
