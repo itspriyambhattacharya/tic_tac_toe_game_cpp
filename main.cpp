@@ -1,5 +1,15 @@
 #include <iostream>
+#include <cstdlib>
 using namespace std;
+
+void cls()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
 
 // global variables
 
@@ -96,6 +106,16 @@ void game_logic()
     cin >> player_input;
     player_input = toupper(player_input);
     current_player = 1;
+    cls();
+    cout << "\n";
+
+    cout << R"( _____ _         _____             _____          
+|_   _(_) ___   |_   _|_ _  ___   |_   _|__   ___ 
+  | | | |/ __|____| |/ _` |/ __|____| |/ _ \ / _ \
+  | | | | (_|_____| | (_| | (_|_____| | (_) |  __/
+  |_| |_|\___|    |_|\__,_|\___|    |_|\___/ \___|)";
+
+    cout << "\n\n\n";
 
     drawBoard();
     for (int i = 1; i <= 9; i++)
@@ -139,6 +159,14 @@ void game_logic()
 
 int main(void)
 {
+    cls();
+    cout << R"( _____ _         _____             _____          
+|_   _(_) ___   |_   _|_ _  ___   |_   _|__   ___ 
+  | | | |/ __|____| |/ _` |/ __|____| |/ _ \ / _ \
+  | | | | (_|_____| | (_| | (_|_____| | (_) |  __/
+  |_| |_|\___|    |_|\__,_|\___|    |_|\___/ \___|)";
+
+    cout << "\n\n\n";
     game_logic();
     return 0;
 }
